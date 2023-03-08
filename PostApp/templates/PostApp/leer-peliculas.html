@@ -1,0 +1,30 @@
+{% extends 'PostApp/padre.html' %}
+
+{% block titulo %}Peliculas{% endblock %}
+
+{% block encabezado %}Peliculas{% endblock %}
+
+{% block contenido %}
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-12"> 
+
+                
+                <h4>Peliculas</h4>
+                {% for pelicula in mispelis %}
+                {{pelicula.nombre}} {{pelicula.estreno}}-{{pelicula.direc}}-{{ pelicula.genero }} - 
+                <a href="{% url 'eliminar-pelicula' pelicula.id %}"> Eliminar</a> - 
+                <a href="{% url 'editar-pelicula' pelicula.id %}"> Editar</a> <br>
+                <br>
+                
+                {% endfor %}
+
+                <a href="{% url 'agregar-pelicula' %}">Agregar Pelicula</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

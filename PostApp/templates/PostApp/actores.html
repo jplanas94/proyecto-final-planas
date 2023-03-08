@@ -1,0 +1,38 @@
+{% extends 'PostApp/padre.html' %}
+
+{% block titulo %}Actores{% endblock %}
+
+{% block encabezado %}Actores{% endblock %}
+
+{% block contenido %}
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-12"> 
+                {% if actoresformulario.errors %}
+                    <p style="color: red;"> Los datos estan mal, reviselos</p>
+                {% endif %}
+                
+                <h4>Actores</h4>
+                {% for actor in mis_actores %}
+                {{actor.nombre}} {{actor.edad}}<br>
+                {% endfor %}
+
+                {% if nuevo_actor %}
+                    <p>se agrego correctamente al actor {{nuevo_actor.nombre}} ({{nuevo_actor.edad}})</p>
+                {% endif %}
+
+
+                <form action="{%url 'actores' %}" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        {{actoresformulario.as_table }}
+                    </table>
+
+                    <input type="submit" value="Enviar">
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

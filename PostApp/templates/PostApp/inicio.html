@@ -1,0 +1,38 @@
+{% extends 'PostApp/padre.html' %}
+{% block titulo %}Bienvenido a Infocine{% endblock %}
+
+{% block encabezado %}Bienvenido a Infocine, el sitio sobre peliculas{% endblock %}
+
+{% block contenido %}
+<section class="features-icons bg-light text-center">
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-12"> 
+                <h1>Busque peliculas por fecha de estreno</h1>
+
+                
+                <p>Estamos buscando estrenos en {{ Fechadeestreno }}</p>
+                {% if Peliculas %}
+                <ul>
+                    {% for pelicula in Peliculas%}
+                    <li>{{ pelicula.nombre }} ({{ pelicula.estreno }})-{{ pelicula.direc }}-{{ pelicula.genero }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No hay peliculas registradas en {{Fechadeestreno}}</p>
+                {% endif %}
+
+                <form action="{%url 'buscar'%}" method="GET">
+                    {% csrf_token %}
+                        <input type="number" name="fechadeestreno" id="fechadeestreno">
+                        <input type="submit" value="Buscar">    
+                    
+                    
+                    </form>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
