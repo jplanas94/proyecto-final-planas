@@ -12,12 +12,17 @@
 
                 
                 <h4>Peliculas</h4>
-                {% for pelicula in mispelis %}
-                {{pelicula.nombre}} {{pelicula.estreno}}-{{pelicula.direc}}-{{ pelicula.genero }} - 
-                <a href="{% url 'eliminar-pelicula' pelicula.id %}"> Eliminar</a> - 
-                <a href="{% url 'editar-pelicula' pelicula.id %}"> Editar</a> <br>
-                <br>
+                {% for pelicula in object_list %}
+
+                <li>
+                    <p>Nombre: {{ pelicula.nombre }} ({{ pelicula.estreno }})</p>
+                    <p>
+                        <a href="{% url 'peliculas-detalle' pelicula.id %}">Ver</a>
+                        <a href="{% url 'editar-pelicula' pelicula.id %}">Editar</a>
+                        <a href="{% url 'pelicula-eliminar' pelicula.id %}">Eliminar</a>
+                    </p>
                 
+                </li>
                 {% endfor %}
 
                 <a href="{% url 'agregar-pelicula' %}">Agregar Pelicula</a>

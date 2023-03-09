@@ -1,0 +1,32 @@
+{% extends 'PostApp/padre.html' %}
+
+{% block titulo %}Directores{% endblock %}
+
+{% block encabezado %}Directores{% endblock %}
+
+{% block contenido %}
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-12"> 
+                
+                <h4>Informacion del Director</h4>
+                <p>nombre: {{director.nombre}}</p> 
+                <p>opera prima: {{director.obra}}</p>     
+                {% if director.foto.is_valid %}
+                <img src="{{ director.foto.url }}"  height="500px">
+                {% endif %}
+                <p>biografia: {{director.biografia}}</p>
+                
+                <p>
+                    <a href="{% url 'directores-list' %}">Regresar</a>
+                </p>
+                
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

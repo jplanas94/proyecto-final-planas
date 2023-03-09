@@ -24,7 +24,8 @@
                 <p>Estamos buscando estrenos en {{ Fechadeestreno }}</p>
                 <ul>
                     {% for pelicula in Peliculas%}
-                    <li>{{ pelicula.nombre }} ({{ pelicula.estreno }})-{{ pelicula.direc }}-{{ pelicula.genero }}</li>
+                    <li>{{ pelicula.nombre }} ({{ pelicula.estreno }})</li>
+                    <a href="{% url 'peliculas-detalle' pelicula.id %}">Ver</a>
                     {% endfor %}
                 </ul>
                 {% else %}

@@ -9,13 +9,16 @@
     <div class="container">
         <div class="row">
             <div class= "col-lg-12"> 
-                <form  method="POST" enctype="multipart/form-data">
+              
+                
+                <h4>Eliminar pelicula</h4>
+         
+              
+                <form method="POST">
                     {% csrf_token %}
-                    
-                        {{ form.as_p }}
-                    
+                    <p>Esta seguro de eliminar la pelicula {{ object }}</p>
 
-                    <input type="submit" value="Enviar">
+                    <input type="submit" value="Seguro">
             </div>
         </div>
     </div>

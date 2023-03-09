@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 
 from django.urls import reverse, reverse_lazy
-from .forms import MyUserCreationForm, UserEditForm
+from .forms import *
 
 # Create your views here.
 
@@ -48,6 +48,7 @@ def register(request):
 
 @login_required
 def editar_perfil(request):
+
     usuario = User.objects.get(username=request.user)
 
     if request.method == 'POST':
@@ -69,3 +70,16 @@ def editar_perfil(request):
 
     contexto={'form':form,'usuario':usuario}
     return render (request,'UserApp/editar-usuario.html',contexto)
+
+
+@login_required
+def agregar_avatar(request):
+    avatar=request.user.avatar
+    form= AvatarFormulario(instance=avatar)
+    if request.method == 'POST':
+        form= AvatarFormulario(request.POST,request.FILES,instance=avatar)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        return render(request,'UserApp/agregar-avatar.html',{'form':form})

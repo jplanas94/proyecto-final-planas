@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import *
 
 class MyUserCreationForm(UserCreationForm):
     username = forms.CharField(label='Nombre de usuario', widget=forms.TextInput)
@@ -24,3 +25,10 @@ class UserEditForm(forms.Form):
         model = User
         fields = ['username','email','first_name','last_name']
         help_texts={ k:''for k in fields}
+
+class AvatarFormulario(forms.ModelForm):
+
+    class Meta:
+        model= Avatar
+        fields='__all__'
+        exclude=['user']

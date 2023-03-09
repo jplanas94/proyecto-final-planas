@@ -9,18 +9,15 @@
     <div class="container">
         <div class="row">
             <div class= "col-lg-12"> 
-                {% if mi_formulario.errors %}
-                    <p style="color: red;"> Los datos estan mal, reviselos</p>
-                {% endif %}
-
-
-                <form action="{%url 'editar-pelicula' pelicula_id%}" method="POST">
+                <form  method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <table>
-                        {{ mi_formulario.as_table }}
-                    </table>
+                    
+                        {{ form.as_p }}
+                    
 
-                    <input type="submit" value="Editar">
+                    <input type="submit" value="Enviar">
+                </form>
+                
             </div>
         </div>
     </div>

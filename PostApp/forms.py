@@ -1,4 +1,5 @@
 from django import forms
+from .models import *
 
 class DirectoresFormulario(forms.Form):
     nombre=forms.CharField()
@@ -15,3 +16,4 @@ class PeliculaFormulario(forms.Form):
 class ActoresFormulario(forms.Form):
     nombre= forms.CharField()
     edad= forms.IntegerField()
+
