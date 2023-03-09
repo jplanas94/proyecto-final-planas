@@ -21,10 +21,14 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Infocine</a>
-                <a href="{% url 'actores' %}">Actores</a>
+                <a href="{% url 'actores-list' %}">Actores</a>
                 <a href="{% url 'leer-peliculas' %}">Peliculas</a>
                 <a href="{% url 'directores' %}">Directores</a>
-                <a class="btn btn-primary" href="{% url 'inicio' %}">inicio</a>
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary" href="{% url 'logout' %}">log out</a>
+                {% else %}
+                <a class="btn btn-primary" href="{% url 'login' %}">log in</a>
+                {% endif %}
 
             </div>
         </nav>

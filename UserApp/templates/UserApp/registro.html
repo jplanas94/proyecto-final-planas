@@ -1,0 +1,31 @@
+{% extends 'PostApp/padre.html' %}
+{% block titulo %}Bienvenido a Infocine{% endblock %}
+
+{% block encabezado %}Bienvenido a Infocine, el sitio sobre peliculas{% endblock %}
+
+{% block contenido %}
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-12"> 
+                <h1>Registro</h1>
+
+                {% if mensaje %}
+                    <p style="color: red;">{{ mensaje }}</p>
+                {% endif %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+
+                    <button type="submit">Registrate</button> 
+
+
+                </form>
+                
+                                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

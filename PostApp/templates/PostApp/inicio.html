@@ -8,11 +8,20 @@
     <div class="container">
         <div class="row">
             <div class= "col-lg-12"> 
+
+
+                {% if mensaje %}
+                <p>{{ mensaje }}</p>
+                {% endif %}
+            
                 <h1>Busque peliculas por fecha de estreno</h1>
 
                 
-                <p>Estamos buscando estrenos en {{ Fechadeestreno }}</p>
+                
+                {% if Fechadeestreno %}
                 {% if Peliculas %}
+
+                <p>Estamos buscando estrenos en {{ Fechadeestreno }}</p>
                 <ul>
                     {% for pelicula in Peliculas%}
                     <li>{{ pelicula.nombre }} ({{ pelicula.estreno }})-{{ pelicula.direc }}-{{ pelicula.genero }}</li>
@@ -20,6 +29,8 @@
                 </ul>
                 {% else %}
                 <p>No hay peliculas registradas en {{Fechadeestreno}}</p>
+                {% endif %}
+
                 {% endif %}
 
                 <form action="{%url 'buscar'%}" method="GET">

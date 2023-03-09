@@ -1,0 +1,28 @@
+{% extends 'PostApp/padre.html' %}
+
+{% block titulo %}Actores{% endblock %}
+
+{% block encabezado %}Actores{% endblock %}
+
+{% block contenido %}
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-12"> 
+                
+                <h4>Informacion de actor</h4>
+                <p>nombre: {{actor.nombre}}</p> 
+                <p>edad: {{actor.edad}}</p>     
+                
+                <p>
+                    <a href="{% url 'actores-list' %}">Regresar</a>
+                </p>
+                
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

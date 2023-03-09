@@ -1,0 +1,27 @@
+{% extends 'PostApp/padre.html' %}
+
+{% block titulo %}Actores{% endblock %}
+
+{% block encabezado %}Actores{% endblock %}
+
+{% block contenido %}
+<section class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-12"> 
+              
+                
+                <h4>Eliminar Actor</h4>
+         
+              
+                <form method="POST">
+                    {% csrf_token %}
+                    <p>Esta seguro de eliminar al actor {{ object }}</p>
+
+                    <input type="submit" value="Seguro">
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
