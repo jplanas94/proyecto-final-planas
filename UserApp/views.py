@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.shortcuts import render,redirect
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.models import User
 from django.contrib.auth import login,logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 
 from django.urls import reverse, reverse_lazy
-from .forms import MyUserCreationForm
+from .forms import MyUserCreationForm, UserEditForm
 
 # Create your views here.
 
@@ -42,3 +44,28 @@ def register(request):
     else:
         form=MyUserCreationForm()
         return render (request,'UserApp/registro.html',{'form':form})
+
+
+@login_required
+def editar_perfil(request):
+    usuario = User.objects.get(username=request.user)
+
+    if request.method == 'POST':
+        form= UserEditForm(request.POST)
+
+        if form.is_valid():
+            informacion = form.cleaned_data
+
+            usuario.username=informacion['username']
+            usuario.email=informacion['email']
+            usuario.last_name=informacion['last_name']
+            usuario.first_name=informacion['first_name']
+
+            usuario.save()
+
+            return redirect('/')
+    else:
+        form = UserEditForm(initial={'username':usuario.username,'email':usuario.email,'last_name':usuario.last_name,'first_name':usuario.first_name})
+
+    contexto={'form':form,'usuario':usuario}
+    return render (request,'UserApp/editar-usuario.html',contexto)

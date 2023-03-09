@@ -26,6 +26,8 @@
                 <a href="{% url 'directores' %}">Directores</a>
                 {% if user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url 'logout' %}">log out</a>
+                <a href="{% url 'editar-perfil' %}">Editar perfil</a>
+
                 {% else %}
                 <a class="btn btn-primary" href="{% url 'login' %}">log in</a>
                 {% endif %}
