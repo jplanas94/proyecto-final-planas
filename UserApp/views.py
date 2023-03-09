@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from .forms import *
 
+
 # Create your views here.
 
 def login_request(request):
@@ -37,13 +38,13 @@ def register(request):
         form = MyUserCreationForm(request.POST)
 
         if form.is_valid():
-            username = form.cleaned_data['username']
+            #username = form.cleaned_data['username']
             form.save()
             return render(request,'PostApp/inicio.html', {'mensaje':'Usuario creado'})
         
     else:
         form=MyUserCreationForm()
-        return render (request,'UserApp/registro.html',{'form':form})
+    return render (request,'UserApp/registro.html',{'form':form})
 
 
 @login_required

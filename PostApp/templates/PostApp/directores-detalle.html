@@ -12,10 +12,10 @@
                 
                 <h4>Informacion del Director</h4>
                 <p>nombre: {{director.nombre}}</p> 
-                <p>opera prima: {{director.obra}}</p>     
-                {% if director.foto.is_valid %}
+                <p>opera prima: {{director.obras}}</p>     
+                
                 <img src="{{ director.foto.url }}"  height="500px">
-                {% endif %}
+                
                 <p>biografia: {{director.biografia}}</p>
                 
                 <p>

@@ -15,9 +15,9 @@
                 <p>Fecha de estreno: {{pelicula.estreno}}</p>     
                 <p>director: {{pelicula.direc}}</p> 
                 <p>genero: {{pelicula.genero}}</p>
-                {% if pelicula.portada.is_valid %}
+                
                 <img src="{{ pelicula.portada.url }}"  height="500px">
-                {% endif%}
+                
                 <p>reseña: {{pelicula.review}}</p>
                 
                 <p>
